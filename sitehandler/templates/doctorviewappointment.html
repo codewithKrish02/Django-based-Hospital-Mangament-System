@@ -43,8 +43,14 @@
                                         <td>{{i.symptoms}}</td>
                                     </tr> 
                                     <tr>
-                                        <td>Add Prescription</td>
-                                        <td><a href="{% url 'doctoraddprecription' i.id i.patientname %}" class="btn btn-danger">Add Prescription</a></td>
+                                        <td>Add Prescription:</td>
+                                        <form method="post" >
+                                        <td>{% csrf_token %}
+                                            <textarea class="form-control" name="prescription"></textarea>
+                                            <input type="hidden" value="{{i.id}}" name="idofappointment">
+                                            </td>
+                                            <td><input type="submit" class="btn btn-danger "value="Add Prescription"></td>
+                                        </form>
                                     </tr>
                                 </table>
                             </div>

@@ -42,6 +42,10 @@
                                         <td>Symptoms:</td>
                                         <td>{{i.symptoms}}</td>
                                     </tr> 
+                                    <tr>
+                                        <td>Delete Appointment:</td>
+                                        <td><a href="{% url 'patient_delete_appointment' i.id %}" onclick="return confirm('Are you sure you want to delete?')" class="btn btn-danger">Delete</a></td>
+                                    </tr>
                                 </table>
                             </div>
                         </li>
