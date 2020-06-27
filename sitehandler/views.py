@@ -283,23 +283,23 @@ def viewappointments(request):
 	print(request.user)
 	g = request.user.groups.all()[0].name
 	if g == 'Patient':
-		upcomming_appointments = Appointment.objects.filter(patientemail=request.user,appointmenttime__lt=timezone.now(),status=True).order_by('appointmentdate')
+		upcomming_appointments = Appointment.objects.filter(patientemail=request.user,appointmentdate__gte=timezone.now(),status=True).order_by('appointmentdate')
 		print("Upcomming Appointment",upcomming_appointments)
-		previous_appointments = Appointment.objects.filter(patientemail=request.user,appointmenttime__lt=timezone.now(),status=False).order_by('-appointmentdate')
+		previous_appointments = Appointment.objects.filter(patientemail=request.user,appointmentdate__gte=timezone.now(),status=False).order_by('-appointmentdate')
 		print("Previous Appointment",previous_appointments)
 		d = { "upcomming_appointments" : upcomming_appointments, "previous_appointments" : previous_appointments }
 		return render(request,'patientviewappointments.html',d)
 	elif g == 'Doctor':
-		upcomming_appointments = Appointment.objects.filter(doctoremail=request.user,appointmenttime__lt=timezone.now(),status=True).order_by('appointmentdate')
+		upcomming_appointments = Appointment.objects.filter(doctoremail=request.user,appointmentdate__gte=timezone.now(),status=True).order_by('appointmentdate')
 		print("Upcomming Appointment",upcomming_appointments)
-		previous_appointments = Appointment.objects.filter(doctoremail=request.user,appointmenttime__lt=timezone.now(),status=False).order_by('-appointmentdate')
+		previous_appointments = Appointment.objects.filter(doctoremail=request.user,appointmentdate__gte=timezone.now(),status=False).order_by('-appointmentdate')
 		print("Previous Appointment",previous_appointments)
 		d = { "upcomming_appointments" : upcomming_appointments, "previous_appointments" : previous_appointments }
 		return render(request,'doctorviewappointment.html',d)
 	elif g == 'Receptionist':
-		upcomming_appointments = Appointment.objects.filter(appointmenttime__lt=timezone.now(),status=True).order_by('appointmentdate')
+		upcomming_appointments = Appointment.objects.filter(appointmentdate__gte=timezone.now(),status=True).order_by('appointmentdate')
 		print("Upcomming Appointment",upcomming_appointments)
-		previous_appointments = Appointment.objects.filter(appointmenttime__lt=timezone.now(),status=False).order_by('-appointmentdate')
+		previous_appointments = Appointment.objects.filter(appointmentdate__gte=timezone.now(),status=False).order_by('-appointmentdate')
 		print("Previous Appointment",previous_appointments)
 		d = { "upcomming_appointments" : upcomming_appointments, "previous_appointments" : previous_appointments }
 		return render(request,'receptionviewappointments.html',d)

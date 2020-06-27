@@ -37,7 +37,7 @@ urlpatterns = [
     path('profile/',profile,name='profile'),
     path('makeappointments/',MakeAppointments,name='makeappointments'),
     path('viewappointments/',viewappointments,name='viewappointments'),
-    path('addprescription(?P<int:<pid>,?P<str:name>)',doctoraddprecription,name='doctoraddprecription'),
+    path('addprescription(?P<int:<pid>,?P<str:name>)/',doctoraddprecription,name='doctoraddprecription'),
     path('logout/',Logout,name='logout'),
 ]
 
