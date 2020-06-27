@@ -1,0 +1,115 @@
+{% include 'include.html' %}
+{% include 'navbar.html' %}
+{% block body %}
+{% load static %}
+<div class="row register-form">
+    <div class="col-md-8 offset-md-2">
+        <form class="custom-form" style="margin-top: 0px;" method="post">
+            {% csrf_token %}
+            <h1>Register Form</h1>
+            <div class="form-row form-group">
+                <div class="col-sm-4 label-column">
+                    <label class="col-form-label" for="name-input-field">Name </label>
+                </div>
+                <div class="col-sm-6 input-column">
+                    <input class="form-control" type="text" name="name" required="">
+                </div>
+            </div>
+            <div class="form-row form-group">
+                <div class="col-sm-4 label-column">
+                    <label class="col-form-label" for="email-input-field">Email </label>
+                </div>
+                <div class="col-sm-6 input-column">
+                    <input class="form-control" type="email" name="email" required="">
+                </div>
+            </div>
+            <div class="form-row form-group">
+                <div class="col-sm-4 label-column">
+                    <label class="col-form-label" for="pawssword-input-field">Password </label>
+                </div>
+                <div class="col-sm-6 input-column">
+                    <input class="form-control" type="password" name="password" required="">
+                </div>
+            </div>
+            <div class="form-row form-group">
+                <div class="col-sm-4 label-column">
+                    <label class="col-form-label" for="repeat-pawssword-input-field">Repeat Password </label>
+                </div>
+                <div class="col-sm-6 input-column">
+                    <input class="form-control" type="password" name="repeatpassword" required="">
+                </div>
+            </div>
+            <div class="form-row form-group">
+                <div class="col-sm-4 label-column">
+                    <label class="col-form-label" for="dropdown-input-field">Gender</label>
+                </div>
+                <div class="col-sm-6 input-column">
+                    <select class="form-control" name="gender" required="">
+                        <optgroup label="Select Gender">
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                        </optgroup>
+                    </select>
+                </div>
+            </div>
+            <div class="form-row form-group">
+                <div class="col-sm-4 label-column">
+                    <label class="col-form-label" for="name-input-field">Phone Number</label>
+                </div>
+                <div class="col-sm-6 input-column">
+                    <input class="form-control" type="tel" name="phonenumber" required="">
+                </div>
+            </div>
+            <div class="form-row form-group">
+                <div class="col-sm-4 label-column">
+                    <label class="col-form-label" for="name-input-field">Address</label>
+                </div>
+                <div class="col-sm-6 input-column">
+                    <textarea class="form-control" name="address" required=""></textarea>
+                </div>
+            </div>
+            <div class="form-row form-group">
+                <div class="col-sm-4 label-column">
+                    <label class="col-form-label" for="name-input-field">Birth Date</label>
+                </div>
+                <div class="col-sm-6 input-column">
+                    <input class="form-control" type="date" name="dateofbirth" required="">
+                </div>
+            </div>
+            <div class="form-row form-group">
+                <div class="col-sm-4 label-column">
+                    <label class="col-form-label" for="name-input-field">Blood Group</label>
+                </div>
+                <div class="col-sm-6 input-column">
+                    <select class="form-control" name="bloodgroup" required="">
+                        <optgroup label="Choose Blood Group">
+                            <option value="O+" selected="">O+</option>
+                            <option value="O-">O-</option>
+                            <option value="A+">A+</option>
+                            <option value="A-">A-</option>
+                            <option value="B+">B+</option>
+                            <option value="B-">B-</option>
+                            <option value="AB+">AB+</option>
+                            <option value="AB-">AB-</option>
+                        </optgroup>
+                    </select>
+                </div>
+            </div>
+            <button class="btn btn-primary submit-button" type="submit">Create Account</button>
+        </form>
+    </div>
+</div>
+{% ifequal error "no" %}
+<script type="text/javascript">
+    alert('Patient saved Sucessfully..........')
+    window.location = ('{% url 'loginpage' %}')
+</script>
+{% endifequal%}
+
+{% ifequal error "yes" %}
+<script type="text/javascript">
+    /*alert('{{e}}')*/
+    alert('Email already exists....')
+</script>
+{% endifequal%}
+{% endblock %}

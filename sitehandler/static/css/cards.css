@@ -1,0 +1,52 @@
+.vdcard {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.6);
+  max-width: 300px;
+  margin: auto;
+  text-align: center;
+  font-family: arial;
+}
+
+#team {
+  /*background: #eee !important;*/
+}
+
+#team .vdcard {
+  border: none;
+  background: #ffffff;
+}
+
+.frontside {
+  position: relative;
+  -webkit-transform: rotateY(0deg);
+  -ms-transform: rotateY(0deg);
+  z-index: 2;
+  margin-bottom: 30px;
+}
+
+.frontside {
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  -ms-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transition: 1s;
+  -webkit-transform-style: preserve-3d;
+  -moz-transition: 1s;
+  -moz-transform-style: preserve-3d;
+  -o-transition: 1s;
+  -o-transform-style: preserve-3d;
+  -ms-transition: 1s;
+  -ms-transform-style: preserve-3d;
+  transition: 1s;
+  transform-style: preserve-3d;
+}
+
+.frontside .vdcard {
+  min-height: 50px;
+}
+
+.frontside .vdcard .vdcard-title {
+  color: black !important;
+  font-size: 35px;
+  font-weight: bold;
+}
+

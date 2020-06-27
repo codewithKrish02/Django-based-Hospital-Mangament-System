@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    {% include 'include.html' %}
+    {% load static %}
+</head>
+
+<body style="background-image: url(&quot;{% static 'img/star-sky.jpg' %}&quot;);">
+    {% include 'adminnav.html' %}
+    <div id="wrapper">
+        {% include 'admin_include.html' %}
+        <div class="page-content-wrapper">
+            <div class="container-fluid"><a class="btn btn-link" role="button" id="menu-toggle" href="#menu-toggle" style="color: white;"><i class="fa fa-bars"></i></a>
+                <h2 class="text-center" style="color: white;">UPCOMING APPOINTMENTS</h2>
+                <div class="text-center" role="tablist" id="accordion-1">
+                    {% for i in upcomming_appointments %}
+                    <ul class = "collapsible popout text-center" data-collapsible = "accordion">
+                        <li class="card">
+                            <div class = "card-header collapsible-header">
+                                <h5 style="color:blue;"><a><i class="fa fa-calendar-check-o"></i>  {{ i.patientname }} appointment with {{ i.doctorname }} on {{i.appointmentdate}}</a></h5>
+                            </div>
+                            <div class = "card-body collapsible-body">
+                                <table align="center" class="card-text" style="font-size: 19px;">
+                                    <tr>
+                                        <td>Doctor Name:</td>
+                                        <td>{{i.doctorname}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Patient Name:</td>
+                                        <td>{{i.patientname}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Appointment Date:</td>
+                                        <td>{{i.appointmentdate}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Appointment Time:</td>
+                                        <td>{{i.appointmenttime}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Symptoms:</td>
+                                        <td>{{i.symptoms}}</td>
+                                    </tr> 
+                                </table>
+                            </div>
+                        </li>
+                    </ul>
+                    {% endfor %}
+                </div>
+                <h2 class="text-center" style="color: white;">PREVIOUS APPIONTMENTS</h2>
+                <div class="text-center" role="tablist" id="accordion-2">
+                    {% for j in previous_appointments %}
+                    <ul class = "collapsible popout text-center" data-collapsible = "accordion">
+                        <li class="card">
+                            <div class = "card-header collapsible-header">
+                                <h5 style="color:blue;"><a><i class="fa fa-calendar-check-o"></i>  {{ j.patientname }} appointment with {{ j.doctorname }} on {{j.appointmentdate}}</a></h5>
+                            </div>
+                            <div class = "card-body collapsible-body">
+                                <table align="center" class="card-text" style="font-size: 19px;">
+                                    <tr>
+                                        <td>Doctor Name:</td>
+                                        <td>{{j.doctorname}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Patient Name:</td>
+                                        <td>{{j.patientname}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Appointment Date:</td>
+                                        <td>{{j.appointmentdate}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Appointment Time:</td>
+                                        <td>{{j.appointmenttime}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Symptoms:</td>
+                                        <td>{{j.symptoms}}</td>
+                                    </tr> 
+                                </table>
+                            </div>
+                        </li>
+                    </ul>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/back-to-top-scroll.js' %}"></script>
+<script src="{% static 'js/Bold-BS4-Animated-Back-To-Top.js' %}"></script>
+<script src="{% static 'js/bs-init.js' %}"></script>
+<script src="{% static 'js/Sidebar-Menu.js' %}"></script>
+</body>
+
+</html>

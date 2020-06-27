@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    {% include 'include.html' %}
+    {% load static %}
+</head>
+
+<body>
+    {% include 'adminnav.html' %}
+    <div id="wrapper">
+        {% include 'patient_nav.html' %}
+        <div class="page-content-wrapper">
+            <div class="container-fluid"><a class="btn btn-link" role="button" id="menu-toggle" href="#menu-toggle"><i class="fa fa-bars"></i></a>
+                <div class="row register-form">
+                    <div class="col-md-8 offset-md-2">
+                        <form class="custom-form" method="post">
+                            {% csrf_token %}
+                            <h1 style="margin-top: 0px;">Make Appointments</h1>
+                            <div class="form-row form-group">
+                                <div class="col-sm-4 label-column">
+                                    <label class="col-form-label" for="name-input-field">Doctor's Name & Field</label>
+                                </div>
+                                <div class="col-sm-6 input-column">
+                                    <select class="form-control" name="doctoremail">
+                                            {% for d in alldoctors %}
+                                            <option value="{{d.email}}">{{d.name}}----->{{d.specialization}}</option>
+                                            {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+                            {% for d in alldoctors %}
+                            <input type="hidden" value="{{d.name}}" name="doctorname">
+                            {% endfor %}
+                            <div class="form-row form-group">
+                                <div class="col-sm-4 label-column"><label class="col-form-label" for="pawssword-input-field">Name</label></div>
+                                <div class="col-sm-6 input-column">
+                                    <input class="form-control" type="text" value="{{user.first_name}}" name="patientname">
+                                </div>
+                            </div>
+                            <div class="form-row form-group">
+                                <div class="col-sm-4 label-column"><label class="col-form-label" for="pawssword-input-field">Email</label></div>
+                                <div class="col-sm-6 input-column">
+                                    <input class="form-control" type="text" value="{{user.username}}" name="patientemail">
+                                </div>
+                            </div>
+                            <div class="form-row form-group">
+                                <div class="col-sm-4 label-column"><label class="col-form-label" for="repeat-pawssword-input-field">Appointment Date</label></div>
+                                <div class="col-sm-6 input-column">
+                                    <input class="form-control" type="date" name="appointmentdate" required="">
+                                </div>
+                            </div>
+                            <div class="form-row form-group">
+                                <div class="col-sm-4 label-column"><label class="col-form-label" for="repeat-pawssword-input-field">Appointment Time</label></div>
+                                <div class="col-sm-6 input-column">
+                                    <input class="form-control" type="time" placeholder="enter time" name="appointmenttime" required="">
+                                </div>
+                            </div>
+                            <div class="form-row form-group">
+                                <div class="col-sm-4 label-column"><label class="col-form-label" for="repeat-pawssword-input-field">Symptoms</label></div>
+                                <div class="col-sm-6 input-column">
+                                    <textarea class="form-control" name="symptoms" required=""></textarea>
+                                </div>
+                            </div>
+                        <button class="btn btn-light submit-button" type="submit">Make Appointment</button></form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% ifequal error "no" %}
+<script type="text/javascript">
+    alert('Appointment Booked Sucessfully..........')
+    window.location = ('{% url 'makeappointments' %}')
+</script>
+{% endifequal%}
+
+{% ifequal error "yes" %}
+<script type="text/javascript">
+    /*alert('{{e}}')*/
+    alert('Something gone wrong....')
+</script>
+{% endifequal%}
+     <script src="{% static 'js/jquery.min.js' %}"></script>
+<script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/back-to-top-scroll.js' %}"></script>
+<script src="{% static 'js/Bold-BS4-Animated-Back-To-Top.js' %}"></script>
+<script src="{% static 'js/bs-init.js' %}"></script>
+<script src="{% static 'js/Sidebar-Menu.js' %}"></script>
+</body>
+
+</html>
