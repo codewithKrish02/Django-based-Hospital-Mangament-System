@@ -6,7 +6,7 @@ This is a Django based Hospital Management System. The main objective of this pr
 For this project to run on your system we need the some packages to be installed for that open your command prompt and navigate to the folder where there is requirements.txt file and enter the command "pip install -r requirements.txt"
 
 ## Run this project
-To run this project open the command prompt in your project folder
+To run this project, open the command prompt in your project folder
 
 Note: You have to navigate to the folder where there is manage.py file.
 
